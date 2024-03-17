@@ -1,4 +1,5 @@
 boto3
 bcrypt
+flask==1.1.2
 psycopg2 
 python-dotenv
