@@ -1,0 +1,4 @@
+boto3
+bcrypt
+psycopg2 
+python-dotenv

@@ -1,0 +1,20 @@
+{
+    "name": "ecore-test",
+    "version": "1.0.0",
+    "description": "Ecore test",
+
+    "scripts": {
+        "install:node": "rm -rf ./node_modules package-lock.json && npm i",
+        "install:python": "pip install -r backend/requirements.txt.",
+        "docker:build": "docker-compose build",
+        "docker:build:backend": "docker-compose build backend",
+        "docker:build:db": "docker-compose build db",
+        "docker:build:frontend": "docker-compose build frontend",
+        "docker:run": "docker-compose up",
+        "docker:run:backend": "docker-compose up -d backend",
+        "docker:run:db": "docker-compose up -d db",
+        "docker:run:frontend": "docker-compose up -d frontend"
+    },
+    "author": "Natan Bueno",
+    "license": "MIT"
+}
