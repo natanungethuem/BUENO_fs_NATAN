@@ -7,7 +7,19 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call your backend API here
+    // TODO replace this with a call to the backend
+    const response = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (

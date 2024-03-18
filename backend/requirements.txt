@@ -1,5 +1,12 @@
-boto3
 bcrypt
-flask==1.1.2
-psycopg2 
+boto3
+cryptography
+dataclasses
+fastapi
+psycopg2
+pycryptodome
 python-dotenv
+python-jose
+python-multipart
+six
+uvicorn

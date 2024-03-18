@@ -6,6 +6,8 @@
     "scripts": {
         "install:node": "rm -rf ./node_modules package-lock.json && npm i",
         "install:python": "pip install -r backend/requirements.txt.",
+        "lint:python": "find ./backend -name '*.py' | xargs pylint",
+        "lint:python:fix": "cd ./backend && autopep8 --in-place --aggressive --aggressive --recursive *.py",
         "docker:build": "docker-compose build",
         "docker:build:backend": "docker-compose build backend",
         "docker:build:db": "docker-compose build db",
