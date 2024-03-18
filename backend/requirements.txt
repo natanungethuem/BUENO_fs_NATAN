@@ -3,7 +3,7 @@ boto3
 cryptography
 dataclasses
 fastapi
-psycopg2
+mysql-connector-python
 pycryptodome
 python-dotenv
 python-jose

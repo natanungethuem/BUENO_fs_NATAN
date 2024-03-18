@@ -1,5 +1,10 @@
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+CREATE DATABASE IF NOT EXISTS ecore;
+
+CREATE USER IF NOT EXISTS 'ecore'@'localhost' IDENTIFIED BY 'ecore';
+GRANT ALL PRIVILEGES ON ecore.* TO 'ecore'@'localhost';
+
+CREATE TABLE IF NOT EXISTS ecore.users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL
+    password TEXT NOT NULL
 );

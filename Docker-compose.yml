@@ -1,15 +1,16 @@
 version: '3.8'
 services:
   db:
-    image: postgres:latest
+    build: ./database
     environment:
-      POSTGRES_USER: ${USER}
-      POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: ${DATABASE}
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_USER: ${USER}
+      MYSQL_PASSWORD: ${PASSWORD}
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/data-ecore
     ports:
-      - "5432:5432"
+      - "3306:3306"
 
   backend:
     build: ./backend

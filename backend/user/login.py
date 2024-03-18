@@ -2,18 +2,19 @@ from datetime import datetime, timedelta
 import os
 import bcrypt
 from jose import jwt
-import psycopg2
+import mysql.connector
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def verify_credentials(username, hashed_password):
     # Connect to the database
-    conn = psycopg2.connect(
+    conn = mysql.connector.connect(
         host=os.getenv('HOST'),
         database=os.getenv('DATABASE'),
         user=os.getenv('USER'),
-        password=os.getenv('PASSWORD')
+        password=os.getenv('PASSWORD'),
+        port=os.getenv('PORT')
     )
 
     cursor = conn.cursor()
@@ -44,7 +45,7 @@ def create_access_token(data: dict):
 def login(data):
     # Parse username and password from event
     username = data.username
-    password = bcrypt.hashpw(data.password, bcrypt.gensalt())
+    password = bcrypt.hashpw(data.password.encode('utf-8'), bcrypt.gensalt())
 
     # Verify if the user and password match the records in the users table
     if verify_credentials(username, password):
