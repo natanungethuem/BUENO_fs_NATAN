@@ -5,6 +5,7 @@ dataclasses
 fastapi
 mysql-connector-python
 pycryptodome
+pyjwt
 python-dotenv
 python-jose
 python-multipart
