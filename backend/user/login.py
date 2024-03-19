@@ -21,8 +21,8 @@ def verify_credentials(username, hashed_password):
 
     # Execute a SELECT query to check if the username and hashed_password
     # exist in the users table
-    query = "SELECT COUNT(*) FROM users WHERE username = %s AND hashed_password = %s"
-    cursor.execute(query, (username, hashed_password))
+    query = "SELECT COUNT(*) FROM users WHERE username = %s AND password = %s"
+    cursor.execute(query, (username, hashed_password.decode('utf-8')))
 
     # Fetch the result of the query
     result = cursor.fetchone()
@@ -45,7 +45,7 @@ def create_access_token(data: dict):
 def login(data):
     # Parse username and password from event
     username = data.username
-    password = bcrypt.hashpw(data.password.encode('utf-8'), bcrypt.gensalt())
+    password = bcrypt.hashpw(data.password.encode('utf-8'), os.getenv('SALT').encode('utf-8'))
 
     # Verify if the user and password match the records in the users table
     if verify_credentials(username, password):
