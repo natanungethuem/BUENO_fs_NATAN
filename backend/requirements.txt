@@ -4,6 +4,7 @@ cryptography
 dataclasses
 fastapi
 mysql-connector-python
+peewee
 pycryptodome
 pyjwt
 python-dotenv

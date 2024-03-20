@@ -2,10 +2,13 @@ from datetime import datetime, timedelta
 import os
 import jwt
 import bcrypt
+from dotenv import load_dotenv
 
-from user.UserModel import UserModel  # Add missing import statement
+from .UserDAO import UserDAO  # Add missing import statement
 
-class UserController:
+load_dotenv()
+
+class UserService:
     @staticmethod
     def create_access_token(data: dict):
         to_encode = data.copy()
@@ -23,7 +26,7 @@ class UserController:
         password = bcrypt.hashpw(data.password.encode('utf-8'), os.getenv('SALT').encode('utf-8'))
 
         # Verify if the user and password match the records in the users table
-        if UserModel.login(username, password):
+        if UserDAO.login(username, password):
             return username
 
         return None
