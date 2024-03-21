@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException
-from .UserDAO import User
 from .UserService import UserService
+from .UserResponseModel import UserLogin
 
 router = APIRouter()
 
 @router.post('/login')
-async def login(form_data: User):
+async def login(form_data: UserLogin):
     user = UserService.login(form_data)
     if not user:
         raise HTTPException(

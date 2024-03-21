@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "install:node": "rm -rf ./node_modules package-lock.json && npm i",
-    "install:python": "pip install -r backend/requirements.txt.",
-    "lint:python": "find ./backend -name '*.py' | xargs pylint",
-    "lint:python:fix": "cd ./backend && autopep8 --in-place --aggressive --aggressive --recursive *.py"
+    "install:python": "pip install -r requirements.txt.",
+    "lint:python": "find . -name '*.py' | xargs pylint",
+    "lint:python:fix": "find . -name '*.py' | xargs -I {} python -m autopep8 --in-place --aggressive --aggressive {}"
   },
   "author": "",
   "license": "ISC"

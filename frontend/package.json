@@ -7,7 +7,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "install:node": "rm -rf ./node_modules package-lock.json && npm i"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.17",

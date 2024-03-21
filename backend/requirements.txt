@@ -11,4 +11,5 @@ python-dotenv
 python-jose
 python-multipart
 six
+uuid
 uvicorn

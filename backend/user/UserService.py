@@ -4,7 +4,7 @@ import jwt
 import bcrypt
 from dotenv import load_dotenv
 
-from .UserDAO import UserDAO  # Add missing import statement
+from .UserModel import User 
 
 load_dotenv()
 
@@ -22,11 +22,13 @@ class UserService:
     @staticmethod
     def login(data):
         # Parse username and password from event
-        username = data.username
-        password = bcrypt.hashpw(data.password.encode('utf-8'), os.getenv('SALT').encode('utf-8'))
+        User.username = data.username
+        User.password = bcrypt.hashpw(
+            data.password.encode('utf-8'),
+            os.getenv('SALT').encode('utf-8'))
 
         # Verify if the user and password match the records in the users table
-        if UserDAO.login(username, password):
-            return username
+        if User.select().where(User).exists():
+            return User.username
 
         return None
