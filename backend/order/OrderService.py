@@ -11,3 +11,11 @@ class OrderService:
             order.code = code
             order.save()
         return len(data)
+    
+    @staticmethod
+    def get_order(code):
+        return Order.select().where(Order.code == code)
+ 
+    @staticmethod
+    def delete_order(code):
+        return Order.delete().where(Order.code == code).execute()

@@ -1,12 +1,9 @@
-import os
-from peewee import DecimalField, CharField, Model
-from dotenv import load_dotenv
+from peewee import CharField
 
-from ..utils.database import db
+from backend.utils.database import db
+from backend.utils.BaseModel import BaseModel
 
-load_dotenv()
-
-class Supplier(Model):
+class Supplier(BaseModel):
     name = CharField()
     address = CharField()
     email = CharField(unique=True)
@@ -14,16 +11,3 @@ class Supplier(Model):
     class Meta:
         database = db
         table_name = 'suppliers'
-
-def generate_sql():
-    queries = Supplier.create_table() + ';\n' + Supplier.insert(name='supplier', 
-                                                                address='address', 
-                                                                email='email@teste.com.br')
-    path = os.getenv('SQL_PATH') + '/create_supplier_table.sql'
-
-    # Write queries to a SQL file
-    with open(path, 'w', encoding='utf-8') as f:
-        for query in queries:
-            f.write(str(query) + ';\n')
-
-    return True

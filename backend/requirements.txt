@@ -1,15 +1,14 @@
 bcrypt
 boto3
 cryptography
-dataclasses
 fastapi
 mysql-connector-python
 peewee
 pycryptodome
 pyjwt
+pymysql
 python-dotenv
 python-jose
 python-multipart
 six
-uuid
 uvicorn

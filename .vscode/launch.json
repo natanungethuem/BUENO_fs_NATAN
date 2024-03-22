@@ -15,5 +15,12 @@
             "program": "backend/app.py",
             "console": "integratedTerminal"
         },
+        {
+            "name": "Python Debugger: utils.create_tables",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "utils.create_tables",
+            "console": "integratedTerminal"
+        },
     ]
 }

@@ -1,15 +1,19 @@
-import pkgutil
-import importlib
+import os
+import importlib.util
+import pymysql
 
-# Iterate over all modules in the current package
-for _, module_name, _ in pkgutil.iter_modules(['backend']):
-    # Import the module
-    module = importlib.import_module(module_name)
+from backend.utils.BaseModel import BaseModel
 
-    # Iterate over all classes in the module
-    for attribute_name in dir(module):
-        attribute = getattr(module, attribute_name)
+pymysql.install_as_MySQLdb()
+for root, dirs, files in os.walk(os.getenv('PYTHONPATH')):
+    for filename in files:
+        if filename.endswith('Model.py'):
+            file_path = os.path.join(root, filename)
+            spec = importlib.util.spec_from_file_location(filename[:-3], file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
 
-        # If the attribute is a class and it has a generate_sql method, call it
-        if isinstance(attribute, type) and hasattr(attribute, 'generate_sql'):
-            attribute.generate_sql()
+            for attribute_name in dir(module):
+                attribute = getattr(module, attribute_name)
+                if attribute_name != 'BaseModel' and isinstance(attribute, type) and issubclass(attribute, BaseModel):
+                    attribute.save_sql()
