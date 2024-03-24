@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from .UserService import UserService
+from user.UserService import UserService
 from .UserResponseModel import UserLogin
 
 router = APIRouter()

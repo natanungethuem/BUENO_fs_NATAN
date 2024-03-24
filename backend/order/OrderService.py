@@ -1,6 +1,6 @@
 import uuid
 
-from .OrderModel import Order 
+from order.OrderModel import Order 
 
 class OrderService:
     @staticmethod
@@ -14,7 +14,7 @@ class OrderService:
     
     @staticmethod
     def get_order(code):
-        return Order.select().where(Order.code == code)
+        return Order.select().where(Order.code == code).get()
  
     @staticmethod
     def delete_order(code):

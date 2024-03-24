@@ -1,7 +1,7 @@
 from peewee import DecimalField, IntegerField, SQL, UUIDField
 
-from backend.utils.database import db
-from backend.utils.BaseModel import BaseModel
+from utils.database import db
+from utils.BaseModel import BaseModel
 
 class Order(BaseModel):
     buyer_id = IntegerField(constraints=[SQL('COMMENT "Codigo do comprador"')])

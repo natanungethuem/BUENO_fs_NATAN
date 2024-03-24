@@ -4,7 +4,7 @@ import jwt
 import bcrypt
 from dotenv import load_dotenv
 
-from .UserModel import User 
+from user.UserModel import User
 
 load_dotenv()
 
@@ -22,13 +22,12 @@ class UserService:
     @staticmethod
     def login(data):
         # Parse username and password from event
-        User.username = data.username
-        User.password = bcrypt.hashpw(
-            data.password.encode('utf-8'),
-            os.getenv('SALT').encode('utf-8'))
+        password=bcrypt.hashpw(
+           data.password.encode('utf-8'),
+           os.getenv('SALT').encode('utf-8'))
 
         # Verify if the user and password match the records in the users table
-        if User.select().where(User).exists():
-            return User.username
+        if User.select().where(User.username == data.username, User.password == password).exists():
+            return data.username
 
         return None

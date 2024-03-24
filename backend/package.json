@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "install:python": "pip install -r requirements.txt.",
-    "lint:python": "find . -name '*.py' | xargs pylint",
-    "lint:python:fix": "find . -name '*.py' | xargs -I {} python -m autopep8 --in-place --aggressive --aggressive {}"
+    "python:install": "pip install -r requirements.txt.",
+    "python:lint": "find . -name '*.py' | xargs pylint",
+    "python:lint:fix": "find . -name '*.py' | xargs -I {} python -m autopep8 --in-place --aggressive --aggressive {}",
+    "python:run": "python app.py"
   },
   "author": "",
   "license": "ISC"

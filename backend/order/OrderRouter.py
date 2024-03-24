@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import APIRouter
-from .OrderService import OrderService
-from .OrderResponseModel import Order
+from order.OrderService import OrderService
+from order.OrderResponseModel import Order
 
 router = APIRouter()
 

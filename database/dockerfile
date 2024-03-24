@@ -2,4 +2,6 @@ FROM mysql:latest
 
 COPY *.sql /docker-entrypoint-initdb.d/
 
+CMD ["--wait_timeout=28800"]
+
 EXPOSE 3306
