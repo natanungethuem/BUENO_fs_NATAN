@@ -28,4 +28,18 @@ You can run these scripts with `npm run <script-name>`. For example, to build al
 
 ## Database
 
-- We did not use foreign keys constraints in the database. Applications like Oracle Retail, for example, do not use this type of constraints to avoid performance loss
+- It did not use foreign keys constraints in the database. Applications like Oracle Retail, for example, do not use this type of constraints to avoid performance loss
+
+- To generate the files to create tables, you need to run the follow script: `python backend/create_tables.py`, it's called automatically when you run `docker:build` or `docker:build:db`
+
+## Test
+To test should be used Insomnia REST client and run the collection of API requests from file: backend\test\Insomnia.json
+
+This project provides the following API endpoints:
+
+- **Create Order**: A POST request to `http://localhost:5000/orders/` to create a new order.
+- **Delete Order**: A DELETE request to `http://localhost:5000/orders/{order_id}` to delete an order.
+- **Get Order**: A GET request to `http://localhost:5000/orders/{order_id}` to retrieve an order.
+- **Login OK**: A POST request to `http://localhost:5000/login` to perform a successful login.
+- **Login Nok**: A POST request to `http://localhost:5000/login` to perform an unsuccessful login.
+

@@ -10,7 +10,7 @@ class OrderService:
             order = Order(**d.__dict__)
             order.code = code
             order.save()
-        return len(data)
+        return {'code': code, 'count': len(data)}
     
     @staticmethod
     def get_order(code):
