@@ -4,9 +4,9 @@
     "description": "Ecore test",
 
     "scripts": {
-        "docker:build": "docker-compose build",
+        "docker:build": "python backend/create_tables.py && docker-compose build",
         "docker:build:backend": "docker-compose build backend",
-        "docker:build:db": "docker-compose build db",
+        "docker:build:db": "python backend/create_tables.py && docker-compose build db",
         "docker:build:frontend": "docker-compose build frontend",
         "docker:run": "docker-compose up",
         "docker:run:backend": "docker-compose up -d backend",

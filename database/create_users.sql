@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  `username` VARCHAR(255) NOT NULL,
+  `username` TEXT NOT NULL,
   `password` TEXT NOT NULL
 );

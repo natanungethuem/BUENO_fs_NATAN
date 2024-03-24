@@ -1,7 +1,7 @@
 from peewee import DecimalField, CharField
 
-from backend.utils.database import db
-from backend.utils.BaseModel import BaseModel
+from utils.database import db
+from utils.BaseModel import BaseModel
 
 class Product(BaseModel):
     name = CharField(unique=True)
